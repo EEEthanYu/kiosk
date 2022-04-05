@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement, increaseByAmount } from "./Reducers/counter";
+import { rewrite } from "./Reducers/namer";
 
-function App() {
+const App = () => {
+
+  const count = useSelector(state => state.counter.value); // store에 명시한 이름
+  const name = useSelector(state => state.namer.value);
+  const dispatch = useDispatch();
+
+  const increase = (amount=1) => {
+    if(amount===1){
+      dispatch(increment()); // 슬라이스 안에서 명시해준 action을 가져다가 쓰자
+    }else {
+      dispatch(increaseByAmount(amount)); // action을 가져다가 쓰는데, argument 전달 시 payload 로 자동으로 매핑
+    }
+
+  }
+  const decrease = () => {
+    dispatch(decrement());
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div>{count}</div>
+      <button onClick={()=>increase()}>+</button>
+      <button onClick={()=>decrease()}>-</button>
+      <button onClick={()=>increase(5)}>+5</button>
+      <div>{name}</div>
+      <input type="text" onChange={(e)=>dispatch(rewrite(e.currentTarget.value))}></input>
+    </>
   );
 }
 

@@ -1,0 +1,11 @@
+@import "./font.scss";
+
+$green : #09cebc;
+$grey : #bfbfbf;
+$black : #383838;
+
+:export {
+    green : $green;
+    grey : $grey;
+    black : $black;
+}
