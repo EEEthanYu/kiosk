@@ -2,9 +2,9 @@ import { useState } from "react";
 import styled from "styled-components";
 import baseTheme from "../css/theme.css";
 import theme from "../styles/theme";
-import { flexCenterAlign, Wrapper } from "../styles/constants";
+import { Wrapper } from "../styles/constants";
 
-const SimpleCheck = ({title = "Check_name", CheckName = "check_name", callback = f => f}) => {
+const SimpleCheck = ({title = "Check_name", checkName = "check_name", callback = f => f}) => {
     
     const [value,setValue] = useState(true);
 
@@ -34,13 +34,12 @@ const SimpleCheck = ({title = "Check_name", CheckName = "check_name", callback =
             position : relative;
             top : -10px;
         }
-
     `
 
     return(
         <Wrapper>
             <SimpleCheck>
-                <input type="checkbox" name={CheckName} checked={value} onChange={()=>{setValue(!value)}}></input>
+                <input type="checkbox" name={checkName} checked={value} onChange={()=>{setValue(!value);if(callback){callback()}}}></input>
                 <span></span>
                 <span>{title}</span>
             </SimpleCheck>

@@ -4,9 +4,13 @@ import styled from "styled-components";
 import baseTheme from "../css/theme.css";
 import { flexCenterAlign, Wrapper } from "../styles/constants";
 
+import { change } from "../Reducers/radioChanger";
+import { useSelector, useDispatch } from "react-redux";
+
 const Radio = ({title = "Radio_name", RadioName = "radio_name", labels = [], callback = f => f}) => {
 
-    const [selectedValue, setSelectedValue] = useState(1); // redux로 교체할 것
+    const selectedValue = useSelector(state => state.radioChanger.value);
+    const dispatch = useDispatch();
 
     const Buttons = styled.div`
         margin-top : 20px;
@@ -41,7 +45,7 @@ const Radio = ({title = "Radio_name", RadioName = "radio_name", labels = [], cal
     `
 
     const handleChange = (value) => {
-        setSelectedValue(value*1);
+        dispatch(change(value*1));
         if(callback) callback();
     }
 
