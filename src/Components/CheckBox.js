@@ -1,12 +1,11 @@
 import { useState } from "react";
-
 import styled from "styled-components";
 import baseTheme from "../css/theme.css";
 import { flexCenterAlign, Wrapper } from "../styles/constants";
 
-const Radio = ({title = "Radio_name", RadioName = "radio_name", labels = [], callback = f => f}) => {
+const Checkbox = ({title = "Radio_name", CheckBoxName = "checkbox_name", labels = [], callback = f => f}) => {
 
-    const [selectedValue, setSelectedValue] = useState(1); // redux로 교체할 것
+    const [selectedValues,setSelectedValues] = useState([]);
 
     const Buttons = styled.div`
         margin-top : 20px;
@@ -41,27 +40,35 @@ const Radio = ({title = "Radio_name", RadioName = "radio_name", labels = [], cal
     `
 
     const handleChange = (value) => {
-        setSelectedValue(value*1);
+        setSelectedValues(buildNewArray(value*1));
         if(callback) callback();
+    }
+    const buildNewArray = (value) => {
+        if(selectedValues.includes(value)){
+            return selectedValues.filter(v=> v !== value); 
+        }else {
+            return [...selectedValues, value];
+        }
     }
 
     return (
         <Wrapper>
-            <div>{title}</div>
-            <Buttons>
-            {
-                labels.map((v,i)=>{
-                    return (
-                        <label>
-                            <input type="radio" name={RadioName} value={i+1} checked={selectedValue===i+1} onChange={(e)=>{handleChange(e.target.value)}}></input>
-                            <div>{v}</div>
-                        </label>
-                    )
-                })
-            }
-            </Buttons>
-        </Wrapper>
+        <div>{title}</div>
+        <Buttons>
+        {
+            labels.map((v,i)=>{
+                return (
+                    <label>
+                        <input type="checkbox" name={CheckBoxName} value={i+1} checked={selectedValues.includes(i+1)} onChange={(e)=>{handleChange(e.target.value)}}></input>
+                        <div>{v}</div>
+                    </label>
+                )
+            })
+        }
+        </Buttons>
+    </Wrapper>
     )
+
 }
 
-export default Radio;
+export default Checkbox;

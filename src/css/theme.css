@@ -30,7 +30,9 @@
 }
 
 :export {
-  green: blue;
+  green: #09cebc;
   grey: #bfbfbf;
   black: #383838;
+  blue: #d2dcff;
+  lightGrey: #dadada;
 }
