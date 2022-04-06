@@ -1,11 +1,16 @@
 @import "./font.scss";
 
 $green : #09cebc;
-// $green : black;
 $grey : #bfbfbf;
 $black : #383838;
 $blue : #d2dcff;
 $lightGrey : #dadada;
+
+@mixin rounded($radius) {
+    -webkit-border-radius : $radius;
+    -moz-border-radius : $radius;
+    border-radius : $radius;
+}
 
 :export {
     green : $green;
@@ -13,4 +18,5 @@ $lightGrey : #dadada;
     black : $black;
     blue : $blue;
     lightGrey : $lightGrey;
+    
 }
