@@ -2,6 +2,7 @@ import Text from "../../Components/Text";
 import { useSelector, useDispatch } from "react-redux";
 import { change } from "../../Reducers/test/Text2";
 import Formatter from "../../Utils/Formatter";
+import { useEffect } from "react";
 
 const Text2 = ({title, placeholder, callback}) => {
 
@@ -9,7 +10,7 @@ const Text2 = ({title, placeholder, callback}) => {
     const dispatch = useDispatch();
 
     const handleChange = (value) => {
-        dispatch(change(Formatter.rrn(value)));
+        dispatch(change(Formatter.phone(value)));
         if(callback) callback();
     }
 

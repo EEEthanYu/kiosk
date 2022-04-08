@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const text1 = createSlice({
-    name : "text1",
+export const text2 = createSlice({
+    name : "text2",
     initialState : {
         value : ""
     },
@@ -12,5 +12,5 @@ export const text1 = createSlice({
     }
 })
 
-export const { change } = text1.actions;
-export default text1.reducer;
+export const { change } = text2.actions;
+export default text2.reducer;
