@@ -1,13 +1,8 @@
-import { createStore } from '@reduxjs/toolkit'
-// import rootReducer from "./Reducers/root.js"
-import rootReducer from "./Reducers/test/Root"
+import { configureStore } from '@reduxjs/toolkit' 
+import changeReducer from "./docu2/docu2slice";
 
-// export default createStore(
-//     rootReducer,
-//     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), 
-// );
-
-export default createStore(
-    rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), 
-);
+export const store = configureStore({
+    reducer : {
+        changer : changeReducer
+    },
+})

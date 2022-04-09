@@ -4,7 +4,6 @@ import styled from "styled-components";
 import baseTheme from "../css/theme.css";
 import { flexCenterAlign, Wrapper } from "../styles/constants";
 
-import { change } from "../Reducers/radioChanger";
 import { useSelector, useDispatch } from "react-redux";
 
 const Radio = ({title = "Radio_name", RadioName = "radio_name", labels = [], callback = f => f}) => {
@@ -44,10 +43,10 @@ const Radio = ({title = "Radio_name", RadioName = "radio_name", labels = [], cal
         }
     `
 
-    const handleChange = (value) => {
-        dispatch(change(value*1));
-        if(callback) callback();
-    }
+    // const handleChange = (value) => {
+    //     dispatch(change(value*1));
+    //     if(callback) callback();
+    // }
 
     return (
         <Wrapper>
@@ -57,7 +56,7 @@ const Radio = ({title = "Radio_name", RadioName = "radio_name", labels = [], cal
                 labels.map((v,i)=>{
                     return (
                         <label>
-                            <input type="radio" name={RadioName} value={i+1} checked={selectedValue===i+1} onChange={(e)=>{handleChange(e.target.value)}}></input>
+                            <input type="radio" name={RadioName} value={i+1} checked={selectedValue===i+1} onChange={(e)=>{}}></input>
                             <div>{v}</div>
                         </label>
                     )
