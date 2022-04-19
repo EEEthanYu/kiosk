@@ -6,11 +6,13 @@ import { Provider } from 'react-redux';
 
 import Docu2 from "./docu2/docu2"
 
+import Pad from "./keypads/numpads/components/Pad";
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <Docu2/>
     </Provider>
   </React.StrictMode>
-  ,document.getElementById('root')
+  , document.getElementById('root')
 );

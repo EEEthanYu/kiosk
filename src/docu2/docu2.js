@@ -17,10 +17,6 @@ const Docu2 = () => {
         dispatch(change("phone",value));
     }
 
-    useEffect(()=>{
-        console.log(name + "/" + phone);
-    })
-
     return (
         <>
             <Text title={"성명"} placeholder={"홍길동"} onClick={(v)=>handleName(v)} />
