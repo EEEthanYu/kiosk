@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { posBottom } from "../../position";
 import Button, { Backspace, Submit } from "./Button";
 
+const NUM = [1,2,3,4,5,6,7,8,9,0];
 const GAP = "50px";
 const Pallette = styled.div`
     padding : 50px;
@@ -34,14 +35,12 @@ const Utils = styled.div`
     gap : ${GAP};
 `
 
-const Pad = ({handleFocusOut = f => f, handelhandleInput = f => f, handleChange = f => f, target}) => {
-
-    const num = [1,2,3,4,5,6,7,8,9,0];
+const Pad = ({handleFocusOut = f => f, handleChange = f => f}) => {
 
     return (
         <Pallette>
             <Btns>
-                {num.map(v=>{
+                {NUM.map(v=>{
                     return <Button value={v} handleClick={()=>{handleChange(v)}}></Button>
                 })}
             </Btns>
