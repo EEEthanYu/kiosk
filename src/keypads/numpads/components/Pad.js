@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { posBottom } from "../../position";
 import Button, { Backspace, Submit } from "./Button";
@@ -34,21 +34,20 @@ const Utils = styled.div`
     gap : ${GAP};
 `
 
-const Pad = ({handleFocusOut = f => f, handelhandleInput = f => f}) => {
+const Pad = ({handleFocusOut = f => f, handelhandleInput = f => f, handleChange = f => f, target}) => {
 
     const num = [1,2,3,4,5,6,7,8,9,0];
-    const [isFocused, setIsFocused] = useState(true); 
 
     return (
         <Pallette>
             <Btns>
                 {num.map(v=>{
-                    return <Button value={v}></Button>
+                    return <Button value={v} handleClick={()=>{handleChange(v)}}></Button>
                 })}
             </Btns>
             <Utils>
-                <Backspace/>
-                <Submit/>
+                <Backspace handleClick={()=>{handleChange(-1)}}/>
+                <Submit handleClick={()=>{handleFocusOut()}}/>
             </Utils>
         </Pallette>
     )

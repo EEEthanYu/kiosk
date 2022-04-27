@@ -4,7 +4,11 @@ const initialState = {
     name : "",
     phone : "",
     home : "",
-    gender : ""
+    gender : "",
+    test : {
+        item1 : "",
+        item2 : "",
+    },
 }
 
 export const docu2slice = createSlice({
@@ -13,7 +17,6 @@ export const docu2slice = createSlice({
     reducers : {
         change : {
             reducer : (state, action) => {
-                console.log(action);
                 state[action.payload.key] = action.payload.value;
             },
             prepare : (key, value) => {

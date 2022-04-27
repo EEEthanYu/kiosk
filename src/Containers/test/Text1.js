@@ -19,7 +19,7 @@ const Text1 = ({title, placeholder, callback}) => {
     })
 
     return(
-        <Text title={title} placeholder={placeholder} callback={callback} onClick={(value)=>{handleChange(value)}}/>
+        <Text title={title} placeholder={placeholder} callback={callback} handleChange={(value)=>{handleChange(value)}} value={name}/>
     )
 }
 

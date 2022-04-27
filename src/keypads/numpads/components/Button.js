@@ -39,23 +39,23 @@ const Complete = styled.button`
 `
 
 // 일반 버튼
-const Button = ({value}) => {
+const Button = ({handleClick = f => f, value}) => {
     return (
-        <Btn backgroundColor="#e2f0dd">{value}</Btn>
+        <Btn backgroundColor="#e2f0dd" onClick={()=>handleClick(value)}>{value}</Btn>
     )
 }
 export default Button;
 
 // 지우기 버튼
-export const Backspace = () => {
+export const Backspace = ({handleClick = f => f}) => {
     return (
-        <Eraser>⟵</Eraser>
+        <Eraser onClick={()=>{handleClick()}}>⟵</Eraser>
     )
 }
 
 // 입력 완료 버튼
-export const Submit = () => {
+export const Submit = ({handleClick = f => f}) => {
     return (
-        <Complete>입력완료</Complete>
+        <Complete onClick={()=>{handleClick()}}>입력완료</Complete>
     )
 }

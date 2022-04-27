@@ -1,25 +1,21 @@
-import { useState, useEffect } from "react";
-import styled from "styled-components";
-import baseTheme from "../css/theme.css";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { flexCenterAlign, Wrapper, InputText } from "../styles/constants";
-import Formatter from "../Utils/formatter.js";
-import SimpleCheck from "./SimpleCheck";
+import useClickOutside from "../hooks/useClickoutside";
 
 import Pad from "../keypads/numpads/components/Pad";
 
-const Text = ({title = "Text_name", placeholder = "내용을 입력해주세요.", onClick = {}, simpleCheck}) => {
+const Text = ({title = "Text_name", placeholder = "내용을 입력해주세요.", handleChange = f => f, value}) => {
 
     const [isFocused, setIsfocused] = useState(false);
+    const self = useRef();
+    useClickOutside(self, ()=>{setIsfocused(false)});
 
     return(
-        <>
-            <Wrapper>
-                <div>{title}</div>
-                <InputText placeholder={placeholder} onChange={(e)=>{onClick(e.target.value)}} onFocus={()=>{setIsfocused(true)}}></InputText>
-            </Wrapper>
-            {isFocused? <Pad handleFocusOut={()=>{setIsfocused(false)}}/> : null}
-            {simpleCheck? simpleCheck : null}
-        </>
+        <Wrapper ref={self}>
+            <div>{title}</div>
+            <InputText placeholder={placeholder} onFocus={()=>{setIsfocused(true)}} value={value}></InputText>
+            {isFocused? <Pad handleFocusOut={()=>{setIsfocused(false)}} handleChange={(input)=>handleChange(input)} /> : null}
+        </Wrapper>
     )
 
 }

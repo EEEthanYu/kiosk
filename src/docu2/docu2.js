@@ -11,16 +11,22 @@ const Docu2 = () => {
     const dispatch = useDispatch();
 
     const handleName = (value) => {
-        dispatch(change("name",value));
+        if(value === -1){
+            return dispatch(change("name", name.substring(0, name.length-1)));
+        }
+        dispatch(change("name", name + value));
     } 
     const handlePhone = (value) => {
-        dispatch(change("phone",value));
+        if(value === -1){
+            return dispatch(change("phone", phone.substring(0, phone.length-1)));
+        }
+        dispatch(change("phone", phone + value));
     }
 
     return (
         <>
-            <Text title={"성명"} placeholder={"홍길동"} onClick={(v)=>handleName(v)} />
-            <Text title={"핸드폰"} placeholder={"010-1234-5678"} onClick={(v)=>handlePhone(v)} />
+            <Text title={"성명"} placeholder={"홍길동"} handleChange={(v)=>handleName(v)} value={name}/>
+            <Text title={"핸드폰"} placeholder={"010-1234-5678"} handleChange={(v)=>handlePhone(v)} value={phone}/>
         </>
     )
 }
