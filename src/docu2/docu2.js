@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { change } from "./docu2slice";
+import * as Hangul from "hangul-js";
 
 import Text from "../components/Text";
 
@@ -18,7 +19,7 @@ const Docu2 = () => {
         }else if(value === 0){
             return dispatch(change("name", ""));
         }
-        dispatch(change("name", name + value));
+        dispatch(change("name", Hangul.a([...Hangul.d(name),value])));
     } 
     const handlePhone = (value) => {
         if(value === -1){
