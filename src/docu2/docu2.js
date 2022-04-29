@@ -4,6 +4,8 @@ import { change } from "./docu2slice";
 
 import Text from "../components/Text";
 
+import PassCert from "../niceCert/niceCert";
+
 const Docu2 = () => {
 
     const name = useSelector(state=>state.changer.name);
@@ -31,6 +33,8 @@ const Docu2 = () => {
         <>
             <Text title={"성명"} placeholder={"홍길동"} handleChange={(v)=>handleName(v)} value={name} padType={"korean"}/>
             <Text title={"핸드폰"} placeholder={"010-1234-5678"} handleChange={(v)=>handlePhone(v)} value={phone} padType={"number"}/>
+
+            <PassCert/>
         </>
     )
 }
